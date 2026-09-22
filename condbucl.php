@@ -56,8 +56,49 @@
     };
 
     echo "<hr>";
-
     ?>
+
+    <h2>Bucles</h2>
+
+    <?php
+    //haz un bucle del 1 al 10 que imprima los números separados por comas.
+    //1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    // for (declaración e inicialización; condición; incremento)
+    for ($i = 1; $i <= 10; $i++) {
+        echo "$i";
+        if ($i < 10){
+            echo ", ";
+        }
+    }
+    echo "<hr>";
+    //Cada bloque del for puede tener varias operaciones:
+    for ($i = 1, $x = 9; $i <= 10; $i++, $x-=3) {
+        echo "$i / $x";
+        if ($i < 10){
+            echo ", ";
+        }
+    }
+
+    echo "<br>Múltiplos: ";
+
+    // recorre con for del 1 al 100 e imprime solamente los números múltiplos de 5 y de 7.
+    for ($i=1; $i <= 100; $i++){
+        if ($i % 5 == 0 and $i % 7 == 0){
+            echo "$i,";
+        }
+    }
+
+    //traduce el for de arriba en un while
+    //while (condición){...}
+    $i = 1;
+    while ($i<=100){
+        if ($i % 5 == 0 and $i % 7 == 0){
+            echo "$i,";
+        }
+        $i++;
+    }
+    ?>
+
 
 </body>
 
