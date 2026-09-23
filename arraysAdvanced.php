@@ -64,12 +64,13 @@ include "infoArrays/restaurants.php";
         //Imprimo el nombre del restaurante
         echo "{$r['name']}: ";
         //Imprimo el array de números employees:
-        //echo $r["employees"];
+        //echo $r["employees"]; //Da error
         //Necesito comprobar que existe $r['employees']
         if (isset($r['employees'])) {
-            foreach ($r['employees'] as $e) {
+            /*foreach ($r['employees'] as $e) {
                 echo "$e, ";
-            }
+            }*/
+            echo implode(", ", $r['employees']);
         } else {
             echo "No hay empleados";
         }
@@ -79,6 +80,21 @@ include "infoArrays/restaurants.php";
     /*Luego en una table de HTML */
 
     ?>
+
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Cocina</th>
+            <th>Camareros</th>
+            <th>Otros</th>
+        </tr>
+        <?php
+        foreach ($p as $r) {
+            //TODO: mañana
+        }
+
+        ?>
+    </table>
     </p>
 
 </body>
