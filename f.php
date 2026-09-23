@@ -39,9 +39,3 @@ function aumenta(&$a)
     return $a;
 }
 
-
-
-
-
-
-
