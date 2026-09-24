@@ -29,19 +29,19 @@ include "infoArrays/restaurants.php";
         echo $p[0]['quantity']['drinks'];
         ?>
     </p>
-    <p>El nombre de los 3 restaurantes obtenidos con un bucle es:
-        <?php
-        //Versión con for:
-        for ($i = 0; $i < count($p); $i++) {
-            echo $p[$i]["name"] . " ";
-        }
-        echo "<br>";
+    <p>El nombre de los 3 restaurantes obtenidos con un bucle es:</p>
+    <?php
+    //Versión con for:
+    for ($i = 0; $i < count($p); $i++) {
+        echo $p[$i]["name"] . " ";
+    }
+    echo "<br>";
 
-        //Versión con foreach:
-        foreach ($p as $r) {
-            echo $r["name"] . " ";
-        }
-        ?>
+    //Versión con foreach:
+    foreach ($p as $r) {
+        echo $r["name"] . " ";
+    }
+    ?>
     <p>Los restaurantes son:</p>
     <ul>
         <?php
@@ -90,12 +90,52 @@ include "infoArrays/restaurants.php";
         </tr>
         <?php
         foreach ($p as $r) {
-            //TODO: mañana
+            echo "<tr>";
+            echo "<td>{$r['name']}</td>";   //Primera celda nombre
+            if (isset($r['employees'])) {
+                foreach ($r['employees'] as $number) {
+                    echo "<td>$number</td>";    //celdas con employees
+                }
+            } else {
+                echo "<td></td><td></td><td></td>"; //3 celdas vacías
+            }
+            echo "</tr>";
         }
-
         ?>
     </table>
-    </p>
+
+    <?php
+
+    //función que reciba un array asociativo, y devuelva un string que contiene una tabla las claves y el tipo del valor que tiene.
+    //por ejmplo:
+    /*
+    clave | tipo
+    name | string
+    address | string
+    employees | array
+    quanty | array
+    */
+    function clavesYTipos($array): string
+    {
+        $ret = '<table border="1">';  //$ret = "<table border=\"1\">";
+        $ret .= "<tr>
+        <th>Nombre</th>
+        <th>Tipo</th></tr>";
+        foreach ($array as $restaurant) {
+            foreach ($restaurant as $key => $value) {
+                $ret .= "<tr>
+                <td>$key</td>
+                <td>" . gettype($value) . "</td>
+                </tr>";
+            }
+        }
+        $ret .= "</table>"; //$ret = $ret . "</table>"; 
+        return $ret;
+    }
+    echo clavesYTipos($p);
+
+    ?>
+
 
 </body>
 
