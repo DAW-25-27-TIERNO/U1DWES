@@ -133,9 +133,19 @@ include "infoArrays/restaurants.php";
         return $ret;
     }
     echo clavesYTipos($p);
+    echo clavesYTipos($a);
 
     ?>
 
+
+    <h2>Añadir campos a arrays</h2>
+    <?php
+    //Voy a añadir el campo address a Mario Bros:
+    if (!isset($p[2]["address"])){
+        $p[2]["address"] = "Nueva dirección 56";
+    }
+    echo "---> {$p[2]["address"]}";
+    ?>
 
 </body>
 

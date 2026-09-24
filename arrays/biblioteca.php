@@ -56,8 +56,7 @@ $biblioteca = [
 
 /* ============================================================
    EJERCICIOS DE ACCESO A VALORES
-   Usa la variable $biblioteca definida arriba. Escribe el código
-   justo debajo de cada enunciado.
+   Usa la variable $biblioteca definida arriba.
    ============================================================ */
 
 // 1) Muestra el título del segundo libro de la categoría "Ciencia Ficción".

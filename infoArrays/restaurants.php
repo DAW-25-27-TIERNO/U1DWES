@@ -24,3 +24,16 @@ $p = [
         "name" => "Mario Bross",
     ]
 ];
+
+
+$a = [
+    [
+        "disp" => "movil",
+        "potencia" => 5.3
+    ],
+    [
+        "disp" => "pc",
+        "potencia" => 50.3,
+        "otra" => true
+    ],
+];
