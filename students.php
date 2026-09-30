@@ -19,7 +19,7 @@
     ];
 
     //Tabla con nombre y nota de matemáticas.
-    //Si la nota es >=8: que la celda salga en verde
+    //Si la nota es >=8: que la celda salga en verde y si nota>=9 que la letra esté en negrita
     ?>
 
     <table>
@@ -28,26 +28,31 @@
             <tr>
                 <th>Nombre</th>
                 <th>Matemáticas</th>
+                <th>Historia</th>
             </tr>
         </thead>
         <tbody>
             <?php
             foreach ($students as $student) :
             ?>
-            <tr>
-                <td>
-                    <?= $student['nombre'] ?>
-                </td>
-                <td class=
-                <?php 
-                if($student['matematicas'] >= 8){
-                    echo "green";
-                }
-                ?>
-                >
-                    <?= $student['matematicas'] ?>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <?= $student['nombre'] ?>
+                    </td>
+                    <td class=<?php
+                                if ($student['matematicas'] >= 8) {
+                                    echo "green";
+                                } else {
+                                    echo '""';
+                                }
+                                ?>
+                                >
+                        <?= $student['matematicas'] ?>
+                    </td>
+                    <td class=<?= $student['historia'] >= 8 ? "greenHist" : "" ?>>
+                        <?= $student['historia'] ?>
+                    </td>
+                </tr>
             <?php
             endforeach;
             ?>
