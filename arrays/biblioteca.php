@@ -12,7 +12,7 @@ $biblioteca = [
             ],
             "resenas" => [
                 ["usuario" => "ana92", "nota" => 5, "comentario" => "Imprescindible"],
-                ["usuario" => "luis_r", "nota" => 4, "comentario" => "Muy buena"]
+                ["usuario" => "luis_r", "nota" => 1, "comentario" => "Muy buena"]
             ]
         ],
         [

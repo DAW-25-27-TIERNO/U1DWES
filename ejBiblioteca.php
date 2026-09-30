@@ -36,11 +36,61 @@ include "./arrays/biblioteca.php";
     <?php
     echo "<p>En total hay " . count($biblioteca) . "</p>";
     foreach ($biblioteca as $categoria => $libros) {
-        echo "<p>De $categoria hay " . count($libros) ."</p>";
+        echo "<p>De $categoria hay " . count($libros) . ": ";
         foreach ($libros as $libro) {
-            
+            echo $libro["titulo"] . ", ";
+        }
+        echo "</p>";
+    }
+
+    ?>
+
+    <p>10) Recorre todos los libros y, para los que tengan "ejemplares", suma el total de ejemplares en todas las sedes y muéstralo así: "Sapiens: 15 ejemplares en total"</p>
+    <?php
+    foreach ($biblioteca as $categoria => $libros) {
+        foreach ($libros as $libro) {
+            $ej = 0;
+            if (isset($libro['ejemplares'])) {
+                //recorrer el array de ejemplares
+                foreach ($libro['ejemplares'] as $sede => $numeroEj) {
+                    $ej += $numeroEj;
+                }
+            }
+            echo "{$libro['titulo']} tiene $ej ejemplares<br>";
         }
     }
+
+    foreach ($biblioteca as $categoria => $libros) {
+        foreach ($libros as $libro) {
+            $ej = 0;
+            if (isset($libro['ejemplares'])) {
+                $ej = array_sum($libro['ejemplares']);
+            }
+            echo "{$libro['titulo']} tiene $ej ejemplares<br>";
+        }
+    }
+
+    ?>
+    <p>13) Recorre TODO el array (categorías, libros y reseñas) y cuenta cuántas reseñas en total tienen nota igual o superior a 4, mostrando el total al final junto con el título del libro que acumula más reseñas de ese tipo.</p>
+
+    <?php
+    $cantidadResenas[] = [];
+    foreach ($biblioteca as $categoria => $libros) {
+        foreach ($libros as $libro) {
+            $cantidadResenas[$libro['titulo']] = 0;
+            //$numNotas = 0;
+            if (isset($libro['resenas'])) {
+                foreach ($libro['resenas'] as $resenas) {
+                    if ($resenas['nota'] >= 4) {
+                        //$numNotas++;
+                        $cantidadResenas[$libro['titulo']]++;
+                    }
+                }
+                echo "<p>El libro {$libro['titulo']} tiene " . $cantidadResenas[$libro['titulo']] . " reseñas superiores a 4.</p>";
+            }
+        }
+    }
+    var_dump($cantidadResenas);
 
     ?>
 
